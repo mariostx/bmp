@@ -88,7 +88,7 @@ const Table: FC<Props> = (props: Props) => {
         <div className='-my-2 overflow-x-auto -mx-4 sm:-mx-6 lg:-mx-8'>
           <div className='py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8'>
             <div className='shadow overflow-hidden border-b border-gray-200 sm:rounded-lg'>
-              <table {...getTableProps()}>
+              <table {...getTableProps()} className='w-full'>
                 <thead className='bg-gray-300'>
                   {headerGroups.map((headerGroup) => (
                     <tr {...headerGroup.getHeaderGroupProps()}>
