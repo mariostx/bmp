@@ -1,11 +1,11 @@
 <h1>
-BMF - Bitcoin mining profitability
+BMP - Bitcoin mining profitability
 </h1>
 <br/>
 
 
 # Build and run using docker
-Go to the BMF root folder and run commands from the CLI.
+Go to the BMP root folder and run commands from the CLI.
 
 <br/>
 
