@@ -7,6 +7,7 @@ WORKDIR /app
 
 COPY package.json ./
 COPY tsconfig.json ./
+COPY wait-for-it.sh ./
 COPY . ./
 
 RUN npm install
