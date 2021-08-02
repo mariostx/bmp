@@ -17,6 +17,11 @@ services:
     ports:
       - 3306:3306
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", 'mysqladmin ping -h 3306']
+      interval: 10s
+      timeout: 2s
+      retries: 10
     volumes:
       - ./db/profitability.sql:/docker-entrypoint-initdb.d/profitability.sql
   phpmyadmin:
@@ -43,14 +48,10 @@ services:
       - 8000:8000
     volumes:
       - ./server:/app
+      - /app/node_modules
     links:
       - mysql-db
-    command: npm start
-    healthcheck:
-      test: ["CMD-SHELL", 'mysqladmin ping']
-      interval: 10s
-      timeout: 2s
-      retries: 10
+    command: ["./wait-for-it.sh", "mysql-db:3606", "--", "npm", "start"]
   client:
     build: ./client
     container_name: react_container
@@ -63,4 +64,4 @@ services:
       - ./client/src:/app/src
     links:
       - server
-    command: npm start
+    command: npm run start
